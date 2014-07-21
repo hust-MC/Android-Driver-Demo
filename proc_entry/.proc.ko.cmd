@@ -1,0 +1,1 @@
+cmd_/root/android/demo/proc_entry/proc.ko := arm-linux-ld -EL -r  -T /root/android/source_code/linux-3.0.8/scripts/module-common.lds --build-id  -o /root/android/demo/proc_entry/proc.ko /root/android/demo/proc_entry/proc.o /root/android/demo/proc_entry/proc.mod.o

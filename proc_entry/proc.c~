@@ -1,16 +1,17 @@
 #include <linux/module.h>
 #include <linux/kernel.h>
+#include <linux/fs.h>
 #include <linux/proc_fs.h>
 #include <linux/miscdevice.h>
 #include <asm/uaccess.h>
 
-#define PROC_NAME_BASE		"proc_demo"	//虚拟文件系统目录名
-#define PROC_NAME		"bin2dec"	//虚拟文件系统文件名
-#define PROC_NAME_READONLY	"readonly"	//只读虚拟文件系统文件名
+#define PROC_NAME_BASE		"proc_demo_mc"	//虚拟文件系统目录名
+#define PROC_NAME		"bin2dec_mc"	//虚拟文件系统文件名
+#define PROC_NAME_READONLY	"readonly_mc"	//只读虚拟文件系统文件名
 
 #define DEBUG 1
 #if DEBUG
-#define de_pri(x,...)	printk(x,##__VA_ARGS_) 
+#define de_pri(x,...)	printk(x,##__VA_ARGS__) 
 #else
 #define de_pri(x,...)	do{} while(0)
 #endif
@@ -44,11 +45,11 @@ static int proc_demo_read(char *page, char **start, off_t off, int count, int *e
 		*eof = 1;
 		return 0;
 	}
-	len = sprintf(page, "%ld",decimal);	//将转换后的十六进制数写入page缓冲区
+	len = sprintf(page, "%ld\n",decimal);	//将转换后的十六进制数写入page缓冲区
 	return len;
 }
 
-static int proc_demo_write(struct file *file, const char _user *buffer, unsigned long const, void *data)
+static int proc_demo_write(struct file *file, const char __user *buffer, unsigned long count, void *data)
 {
 	char buf[count];
 	if(copy_from_user(buf, buffer, count))
@@ -75,10 +76,10 @@ static int proc_init(void)
 	}
 
 	proc_entry = create_proc_entry(PROC_NAME, 666, proc_entry_base);		//创建虚拟文件
-	proc_entry_readonly = create_proc_read_only(PROC_NAME,444,proc_entry_base,proc_demo_readonly,NULL);	//创建只读虚拟文件
-	if(proc_entry == NULL || proc_entry_readonly)
+	proc_entry_readonly = create_proc_read_entry(PROC_NAME_READONLY,444,proc_entry_base,proc_demo_readonly,NULL);	//创建只读虚拟文件
+	if(proc_entry == NULL || proc_entry_readonly == NULL)
 	{
-		de_pir("Counldn't create proc entry");	
+		de_pri("Counldn't create proc entry\n");	
 		return -ENOMEM;	
 	}
 	else
@@ -98,7 +99,7 @@ static void proc_exit(void)
 	}
 	if(proc_entry_readonly != NULL)
 	{
-		remove_proc_entry(PROC_NAME_READONLY, protc_entry_base);
+		remove_proc_entry(PROC_NAME_READONLY, proc_entry_base);
 	}
 	if(proc_entry_base != NULL)
 	{
@@ -107,4 +108,4 @@ static void proc_exit(void)
 }
 
 module_init(proc_init);
-module_init(proc_exit);
+module_exit(proc_exit);
