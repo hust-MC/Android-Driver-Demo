@@ -30,7 +30,6 @@ static int atomic_open(struct inode *node, struct file *file)
 			atomic_inc(&int_atomic_available);
 			return -EBUSY;
 		}
-
 	}
 	return 0;
 }

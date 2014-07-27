@@ -1,0 +1,6 @@
+#build.sh
+
+make -C  /usr/src/linux-headers-3.11.0-15-generic/ M=/root/android/demo/atomic
+
+rmmod atomic
+insmod atomic.ko
