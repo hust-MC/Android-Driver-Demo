@@ -33,7 +33,7 @@ static int atomic_open(struct inode *node, struct file *file)
 	return 0;
 }
 
-static void atomic_release(struct inode *node, struct file *file)
+static int atomic_release(struct inode *node, struct file *file)
 {
 	if(atom)
 	{
