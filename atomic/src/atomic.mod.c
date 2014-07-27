@@ -21,6 +21,7 @@ __attribute__((section("__versions"))) = {
 	{ 0x15692c87, __VMLINUX_SYMBOL_STR(param_ops_int) },
 	{ 0x68dd117b, __VMLINUX_SYMBOL_STR(misc_deregister) },
 	{ 0xff4d10c2, __VMLINUX_SYMBOL_STR(misc_register) },
+	{ 0x50eedeb8, __VMLINUX_SYMBOL_STR(printk) },
 	{ 0xb4390f9a, __VMLINUX_SYMBOL_STR(mcount) },
 };
 
@@ -30,4 +31,4 @@ __attribute__((section(".modinfo"))) =
 "depends=";
 
 
-MODULE_INFO(srcversion, "E74A81636F518F8AD57DAEA");
+MODULE_INFO(srcversion, "0B94EB65B25E6B4B3D7340F");

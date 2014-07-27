@@ -23,12 +23,14 @@ static int atomic_open(struct inode *node, struct file *file)
 {
 	if(atom)
 	{
+		print_debug("available = %d\n",int_atomic_available);
 		//先将int_atomic_available的值减1，然后判断int_atomic_available变量的值，如果不为0，则已被打开
 		if(!atomic_dec_and_test(&int_atomic_available))
 		{
 			atomic_inc(&int_atomic_available);
+			return -EBUSY;
 		}
-		return -EBUSY;
+
 	}
 	return 0;
 }
