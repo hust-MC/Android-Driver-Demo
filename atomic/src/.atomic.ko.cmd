@@ -1,0 +1,1 @@
+cmd_/root/android/demo/atomic/src/atomic.ko := ld -r -m elf_i386 -T /usr/src/linux-headers-3.11.0-15-generic/scripts/module-common.lds --build-id  -o /root/android/demo/atomic/src/atomic.ko /root/android/demo/atomic/src/atomic.o /root/android/demo/atomic/src/atomic.mod.o
