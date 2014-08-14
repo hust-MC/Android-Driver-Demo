@@ -1,15 +1,4 @@
-#include <linux/kernel.h>
-#include <linux/fs.h>
-#include <linux/module.h>
-#include <linux/init.h>
-#include <linux/miscdevice.h>
-#include <linux/delay.h>
-
-#include <asm/uaccess.h>
-#include <asm/spinlock.h>
-//#include <stdio.h>
-//#include <stdlib.h>
-
+#include "../inc/spin_lock.h"
 #define DEVICE_NAME "spin_lock"
 
 static char *data = "read\n";
@@ -52,7 +41,7 @@ static ssize_t spinLock_read(struct file *file, char __user *buf, size_t count,
 	else
 	{
 		read_flag = 0;
-		printk("read_flag = 0\n");
+		print_debug("read_flag = 0\n");
 		return 0;
 	}
 }
@@ -77,12 +66,12 @@ static ssize_t spinLock_write(struct file *file, const char __user *buf,
 		{
 			if (spin_trylock(&lock))
 			{
-				printk("spin_lock is available\n");
+				print_debug("spin_lock is available\n");
 				spin_unlock(&lock);
 			}
 			else
 			{
-				printk("spin_lock is busy\n");
+				print_debug("spin_lock is busy\n");
 				return -EBUSY;
 			}
 		}
@@ -107,7 +96,7 @@ static int spinLock_init(void)
 
 static void spinLock_exit(void)
 {
-	printk("spinLock_exit success\n");
+	print_debug("spinLock_exit success\n");
 	misc_deregister(&misc);
 }
 
