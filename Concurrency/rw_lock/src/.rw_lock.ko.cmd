@@ -1,0 +1,1 @@
+cmd_/root/android/demo/Concurrency/rw_lock/src/rw_lock.ko := ld -r -m elf_i386 -T /usr/src/linux-headers-3.11.0-15-generic/scripts/module-common.lds --build-id  -o /root/android/demo/Concurrency/rw_lock/src/rw_lock.ko /root/android/demo/Concurrency/rw_lock/src/rw_lock.o /root/android/demo/Concurrency/rw_lock/src/rw_lock.mod.o
