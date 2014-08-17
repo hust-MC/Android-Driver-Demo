@@ -49,7 +49,7 @@ static ssize_t spinLock_read(struct file *file, char __user *buf, size_t count,
 static ssize_t spinLock_write(struct file *file, const char __user *buf,
 		size_t count, loff_t *ppos)
 {
-//	char *cmd = (char *) malloc(sizeof(char *));
+//	char *cmd = (char *) malloc(sizeof(char *));           //为指针分配内存
 	char cmd[10] = { 0 };
 	if (copy_from_user(cmd, (void*) buf, count))
 	{
