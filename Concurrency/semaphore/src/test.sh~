@@ -1,0 +1,3 @@
+cat /dev/semaphore &
+sleep 2
+echo 123 > /dev/semaphore
