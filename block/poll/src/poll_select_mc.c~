@@ -19,7 +19,8 @@ printk("read\n");
 		result = buffer_char_count;
 		buffer_char_count = 0;
 		up(&sem);
-printk("%d\n",result);
+printk("result = %d\n",result);
+printk("count = %d\n",count);
 		return result;
 	}
 	else

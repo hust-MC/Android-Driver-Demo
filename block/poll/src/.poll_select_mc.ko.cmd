@@ -1,0 +1,1 @@
+cmd_/root/android/demo/block/poll/src/poll_select_mc.ko := ld -r -m elf_i386 -T /usr/src/linux-headers-3.11.0-15-generic/scripts/module-common.lds --build-id  -o /root/android/demo/block/poll/src/poll_select_mc.ko /root/android/demo/block/poll/src/poll_select_mc.o /root/android/demo/block/poll/src/poll_select_mc.mod.o

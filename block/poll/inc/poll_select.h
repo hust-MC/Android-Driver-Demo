@@ -7,7 +7,7 @@
 #include <linux/sched.h>
 #include <linux/poll.h>
 //  定义设备文件名
-#define DEVICE_NAME "poll_select"
+#define DEVICE_NAME "poll_select_mc"
 #define MAX_BUFFER_SIZE 20
 
 static char buffer[MAX_BUFFER_SIZE];

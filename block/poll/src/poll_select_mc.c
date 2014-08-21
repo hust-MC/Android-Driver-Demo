@@ -1,11 +1,11 @@
-#include <../inc/poll_select.h>
+#include "../inc/poll_select.h"
 
 static ssize_t demo_read(struct file *file, char __user *buf, size_t count,
 		loff_t *ppos)
 {
 	ssize_t result = 0;
 
-
+printk("read\n");
 	if (buffer_char_count > 0)
 	{
 		if(down_interruptible(&sem))
@@ -19,6 +19,8 @@ static ssize_t demo_read(struct file *file, char __user *buf, size_t count,
 		result = buffer_char_count;
 		buffer_char_count = 0;
 		up(&sem);
+printk("result = %d\n",result);
+printk("count = %d\n",count);
 		return result;
 	}
 	else
