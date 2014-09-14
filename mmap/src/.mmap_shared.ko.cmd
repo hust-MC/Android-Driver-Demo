@@ -1,0 +1,1 @@
+cmd_/root/android/demo/mmap/src/mmap_shared.ko := ld -r -m elf_i386 -T /usr/src/linux-headers-3.11.0-15-generic/scripts/module-common.lds --build-id  -o /root/android/demo/mmap/src/mmap_shared.ko /root/android/demo/mmap/src/mmap_shared.o /root/android/demo/mmap/src/mmap_shared.mod.o
