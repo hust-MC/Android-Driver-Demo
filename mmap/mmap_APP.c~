@@ -13,7 +13,6 @@ int main()
 
 	fd = open("/dev/mmap_shared", O_RDWR);
 	start = mmap(NULL, PAGE_SIZE, PROT_READ, MAP_PRIVATE, fd, 0);
-start = mmap(NULL, PAGE_SIZE, PROT_READ, MAP_PRIVATE, fd, 0);
 
 	if (start == MAP_FAILED)
 	{
