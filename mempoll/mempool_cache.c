@@ -79,6 +79,8 @@ static void __exit demo_exit(void)
 		printk("data.value=%d\n", datap->value);
 		if (mempoolp && datap)
 		{
+printk("curr_nr = %d\n",mempoolp->curr_nr);
+printk("nr = %d\n",datap->nr);
 			mempoolp->curr_nr = datap->nr;		//将curr_nr指向datap被获取时的索引
 			mempool_free(datap, mempoolp);		//将datap释放即归还给elements数组
 			mempoolp->curr_nr = mempoolp->min_nr;	//这一步为销毁内存池必须步骤

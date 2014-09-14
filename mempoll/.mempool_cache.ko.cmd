@@ -1,0 +1,1 @@
+cmd_/root/android/demo/mempoll/mempool_cache.ko := ld -r -m elf_i386 -T /usr/src/linux-headers-3.11.0-15-generic/scripts/module-common.lds --build-id  -o /root/android/demo/mempoll/mempool_cache.ko /root/android/demo/mempoll/mempool_cache.o /root/android/demo/mempoll/mempool_cache.mod.o
