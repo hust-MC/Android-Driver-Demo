@@ -1,5 +1,9 @@
 #include "../inc/wait_queue.h"
 
+static char buffer[MAX_BUFFER_SIZE];
+static int buffer_char_count = 0;
+static wait_queue_head_t my_queue;
+
 static ssize_t demo_read(struct file *file, char __user *buf, size_t count,
 		loff_t *ppos)
 {
