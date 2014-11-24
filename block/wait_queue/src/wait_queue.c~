@@ -1,5 +1,9 @@
 #include "../inc/wait_queue.h"
 
+static char buffer[MAX_BUFFER_SIZE];
+static int buffer_char_count = 0;
+static wait_queue_head_t my_queue;
+
 static ssize_t demo_read(struct file *file, char __user *buf, size_t count,
 		loff_t *ppos)
 {
@@ -12,6 +16,7 @@ static ssize_t demo_read(struct file *file, char __user *buf, size_t count,
 			return -EINVAL;
 		}
 		wake_up_interruptible(&my_queue);
+		flag = 0;
 		result = buffer_char_count;
 		buffer_char_count = 0;
 		return result;
@@ -28,7 +33,7 @@ static ssize_t demo_write(struct file *file, const char __user *buf,
 		size_t count, loff_t *ppos)
 {
 	ssize_t result = 0;
-	wait_event_interruptible(my_queue, buffer_char_count == 0);
+	wait_event_interruptible(my_queue, flag);
 	if (copy_from_user(buffer, buf, count))
 	{
 		return -EINVAL;

@@ -1,5 +1,5 @@
 #! /bin/bash
 
-make -C /usr/src/linux-headers-3.11.0-15-generic/ M=/root/android/demo/block/src
+make -C /usr/src/linux-headers-3.11.0-15-generic/ M=/root/android/demo/block/wait_queue/src
 rmmod wait_queue
 insmod src/wait_queue.ko

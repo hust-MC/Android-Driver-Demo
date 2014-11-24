@@ -32,7 +32,7 @@ static ssize_t demo_write(struct file *file, const char __user *buf,
 		size_t count, loff_t *ppos)
 {
 	ssize_t result = 0;
-	wait_event_interruptible(my_queue, buffer_char_count == 0);
+	wait_event_interruptible(my_queue, !buffer_char_count);
 	if (copy_from_user(buffer, buf, count))
 	{
 		return -EINVAL;
