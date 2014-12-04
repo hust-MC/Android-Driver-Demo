@@ -50,7 +50,7 @@ static int word_count_init(void)
 	unsigned long start, end;
 	rdtscl(start);
 	rdtscl(end);
-	printk("time:%li\n",end - start);
+	printk("time:%li",end - start);
 
     return ret;
 }

@@ -118,6 +118,7 @@ static int leds_init(void)
 	{
 		gpio_set_value(led_gpios[i], ~leds_state);
 	}
+	
 	return ret;
 }
 

@@ -1,0 +1,1 @@
+cmd_/root/android/demo/Android_Driver/linux_driver/device_number_default/built-in.o :=  rm -f /root/android/demo/Android_Driver/linux_driver/device_number_default/built-in.o; ar rcsD /root/android/demo/Android_Driver/linux_driver/device_number_default/built-in.o
